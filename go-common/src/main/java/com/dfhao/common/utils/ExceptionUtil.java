@@ -3,7 +3,6 @@ package com.dfhao.common.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -24,24 +23,14 @@ public class ExceptionUtil {
      * @return 堆栈信息
      */
     public static String getExceptionInfo(Exception e) {
-        Writer writer = null;
-        PrintWriter printWriter = null;
-        try {
-            writer = new StringWriter();
-            printWriter = new PrintWriter(writer);
+        try (Writer writer = new StringWriter();
+             PrintWriter printWriter = new PrintWriter(writer)) {
             e.printStackTrace(printWriter);
             return writer.toString();
-        } finally {
-            try {
-                if (writer != null) {
-                    writer.close();
-                }
-                if (printWriter != null) {
-                    printWriter.close();
-                }
-            } catch (IOException ioe) {
-                logger.error("ExceptionUtil-关闭流-异常", ioe);
-            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            logger.error("ExceptionUtil-异常", e);
         }
+        return "";
     }
 }
