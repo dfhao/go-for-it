@@ -13,10 +13,12 @@
 *.tar.gz
 *.rar
 
+# spring
 *.mvn
 HELP.md
 mvnw
 mvnw.cmd
+
 target/
 bin
 !.mvn/wrapper/maven-wrapper.jar
@@ -34,6 +36,8 @@ bin
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+*/.DS_Store
+.DS_Store
 
 ### IntelliJ IDEA ###
 .idea
