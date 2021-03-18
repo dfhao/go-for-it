@@ -25,6 +25,9 @@ import java.util.Map;
 public class HttpUtil {
     private static final Logger logger = LoggerFactory.getLogger(HttpUtil.class);
 
+    private static final int connectTimeout = 120000;
+    private static final int socketTimeout = 120000;
+
     /**
      * json 请求
      *
@@ -40,7 +43,7 @@ public class HttpUtil {
         String resultString = "";
         try {
             HttpPost httpPost = new HttpPost(url);
-            RequestConfig config = RequestConfig.custom().setConnectTimeout(120000).setSocketTimeout(120000).build();
+            RequestConfig config = RequestConfig.custom().setConnectTimeout(connectTimeout).setSocketTimeout(socketTimeout).build();
             httpPost.setConfig(config);
             if (header != null) {
                 for (String key : header.keySet()) {
@@ -82,7 +85,7 @@ public class HttpUtil {
         String resultString = "";
         try {
             HttpPost httpPost = new HttpPost(url);
-            RequestConfig config = RequestConfig.custom().setConnectTimeout(120000).setSocketTimeout(120000).setConnectionRequestTimeout(120000).build();
+            RequestConfig config = RequestConfig.custom().setConnectTimeout(connectTimeout).setSocketTimeout(socketTimeout).setConnectionRequestTimeout(connectTimeout).build();
             httpPost.setConfig(config);
             if (header != null) {
                 for (String key : header.keySet()) {
