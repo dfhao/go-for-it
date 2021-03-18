@@ -7,7 +7,7 @@
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
-    <name>go-iSpringboot</name>
+    <name>go-ispringboot</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -36,6 +36,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--    导入配置文件处理器    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
 
