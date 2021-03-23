@@ -1,7 +1,6 @@
 package com.dfhao.ispringboot.test.controller;
 
 import com.dfhao.ispringboot.test.bean.User;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,11 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class TestController {
-    @Value("${com.dfhao.title}")
-    private String title;
-    @Value("${com.dfhao.description}")
-    private String description;
-
     @GetMapping("/getHello")
     public String getHello() {
         return "hello world";
@@ -26,8 +20,8 @@ public class TestController {
     @GetMapping("/getUser")
     public User getUser() {
         User user = new User();
-        user.setUserName(title);
-        user.setPassWord(description);
+        user.setUserName("title");
+        user.setPassWord("title");
         return user;
     }
 }

@@ -1,13 +1,13 @@
 package com.dfhao.ispringboot.test.bean;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 测试程序
@@ -15,7 +15,7 @@ import java.io.Serializable;
  * @author :  dfhao
  * @date :  2021/3/19 10:50
  */
-@Table("user_t")
+@Table(name = "user_t")
 @Entity
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -23,16 +23,32 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
+
+    @Column
     private String userName;
-    @Column(nullable = false)
+
+    @Column
     private String passWord;
-    @Column(nullable = false, unique = true)
+
+    @Column
     private String email;
-    @Column(nullable = true, unique = true)
+
+    @Column
     private String nickName;
-    @Column(nullable = false)
-    private String regTime;
+
+    @Column
+    private Date regTime;
+
+    public User() {
+    }
+
+    public User(String nickName, String email, String userName, String passWord, Date regTime) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.email = email;
+        this.nickName = nickName;
+        this.regTime = regTime;
+    }
 
     public Long getId() {
         return id;
@@ -74,11 +90,11 @@ public class User implements Serializable {
         this.nickName = nickName == null ? null : nickName.trim();
     }
 
-    public String getRegTime() {
+    public Date getRegTime() {
         return regTime;
     }
 
-    public void setRegTime(String regTime) {
-        this.regTime = regTime == null ? null : regTime.trim();
+    public void setRegTime(Date regTime) {
+        this.regTime = regTime;
     }
 }
